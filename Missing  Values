@@ -1,0 +1,14 @@
+import numpy as np
+df = pd.DataFrame(np.random.randn(5, 3), index=['a', 'c', 'e', 'f', 'h'], columns=['one', 'two', 'three'])
+
+# Display missing values
+df.isna()
+# Display values not missing
+df.notna()
+
+# Enter the missing values
+df2.fillna(0)
+df2['one'].fillna('missing')
+
+# Fill the missing values by mean of the columns
+dff.where(pd.notna(dff), dff.mean(), axis='columns')
