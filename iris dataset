@@ -1,0 +1,17 @@
+# Importing the dataset
+from sklearn.datasets import load_iris
+dataset = load_iris()
+X = dataset.data
+Y = dataset.target
+
+# Splitting into training and testing set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
+
+# Training rhe model
+from sklearn.naive_bayes import GaussianNB
+classifier = GaussianNB()
+classifier.fit(X_train, y_train)
+
+# Evaluating the model
+y_pred = classifier.predict(X_test)
