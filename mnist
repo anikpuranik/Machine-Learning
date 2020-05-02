@@ -1,12 +1,18 @@
 # Importing libraries
-import pandas as pd
 from keras.datasets import mnist
 from keras import models, layers
+from matplotlib import pyplot as plt
 
 # Importing dataset
 (x_train,y_train), (x_test,y_test) = mnist.load_data()
 
+# Visualizing the data
+plt.imshow(x_train[1])
+plt.show()
+
 # Scaling dataset
+x_train = x_train.reshape(60000, 28, 28, 1)
+x_test = x_test.reshape(10000, 28, 28, 1)
 x_train = x_train/255.0
 x_test = x_test/255.0
 
@@ -15,7 +21,6 @@ model = models.Sequential([
     layers.Flatten(),
     layers.Dense(128, activation = 'relu'),
     layers.Dense(64, activation = 'relu'),
-    layers.Dense(32, activation = 'relu'),
     layers.Dense(10, activation = 'sigmoid')
     ])
 model.compile(optimizer = 'adam', 
@@ -23,7 +28,6 @@ model.compile(optimizer = 'adam',
               metrics = ['accuracy'])
 model.fit(x_train, y_train, epochs=4)
 
-
-#Testing the model
+# Testing the model
 result = model.evaluate(x_test, y_test)
 print(result)
