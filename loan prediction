@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Importing the dataset
-dataset = pd.read_csv('dataset.csv')
+dataset = pd.read_csv('loan_prediction_dataset.csv')
 
 # Preparing the dataset
 #Removing non-important columns
