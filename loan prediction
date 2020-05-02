@@ -1,0 +1,50 @@
+# Importing libraries
+import pandas as pd 
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# Importing the dataset
+dataset = pd.read_csv('dataset.csv')
+
+# Preparing the dataset
+#Removing non-important columns
+dataset.drop(columns = ['Loan_ID'], axis=1, inplace=True)
+
+# Splitting into categorical and numerical data
+cat_data = []
+num_data = []
+for ind,column in enumerate(dataset.dtypes):
+    if column == object:
+        cat_data.append(dataset.iloc[:, ind])
+    else:
+        num_data.append(dataset.iloc[:, ind])
+        
+cat_data = pd.DataFrame(cat_data).transpose()
+num_data = pd.DataFrame(num_data).transpose()
+
+#Handling the missing values
+cat_data = cat_data.apply(lambda x:x.fillna(x.value_counts().index[0]))
+num_data.fillna(method='bfill', inplace=True)
+
+#Converting categorical values into numerical
+for i in cat_data:
+    cat_data[i] = LabelEncoder().fit_transform(cat_data[i])
+
+y = cat_data.iloc[:, -1]
+cat_data.drop(columns=['Loan_Status'], inplace=True)
+X = pd.concat([cat_data, num_data], axis=1)
+
+# Splitting into training and testing dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Training the model
+classifier = GaussianNB()
+classifier = classifier.fit(X_train, y_train)
+print("Accuracy while Training : ", classifier.score(X_train, y_train))
+
+pred = classifier.predict(X_test)
+
+print("Accuracy while Testing : ", accuracy_score(y_test, pred))
+print("Confusion matirx : ", confusion_matrix(y_test, pred))
