@@ -1,0 +1,29 @@
+# importing libraries
+from PIL import Image
+from keras.preprocessing.image import img_to_array, array_to_img
+from matplotlib import pyplot as plt
+
+# loading image
+img = Image.open('digit.png')
+
+# image to data conversion
+dataset = img_to_array(img)
+
+# cropping the image
+data = dataset[25:90, 30:100]
+
+# data to image conversion
+img = array_to_img(data)
+
+# resize image
+img = img.resize((28,28))
+
+# visualization
+plt.imshow(img)
+
+# image 
+new_data = data[:,:,:1]
+
+# saving image 
+path = ''
+img.save(path,'png')
