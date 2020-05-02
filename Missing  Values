@@ -12,3 +12,6 @@ df2['one'].fillna('missing')
 
 # Fill the missing values by mean of the columns
 dff.where(pd.notna(dff), dff.mean(), axis='columns')
+
+# Fill the maximum value of each column.
+cat_data = cat_data.apply(lambda x:x.fillna(x.value_counts().index[0]))
