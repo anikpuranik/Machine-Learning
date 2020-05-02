@@ -1,0 +1,18 @@
+# importing libraries
+from keras.models import load_model
+from keras.preprocessing.image import load_img, img_to_array
+from matplotlib import pyplot as plt
+
+# Loading the image
+img = load_img('/home/asus/dataset/digit_testing')
+data = img_to_array(img)
+
+# Visualization
+plt.imshow(img)
+
+# Loading the model
+model = load_model('mnist.h')
+
+# Evaluating the model
+new_data = data[:, :, :1]
+y_pred = model.predict([[new_data]])
