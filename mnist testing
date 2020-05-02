@@ -4,7 +4,7 @@ from keras.preprocessing.image import load_img, img_to_array
 from matplotlib import pyplot as plt
 
 # Loading the image
-img = load_img('/home/asus/dataset/digit_testing')
+img = load_img('mnist_digits')
 data = img_to_array(img)
 
 # Visualization
