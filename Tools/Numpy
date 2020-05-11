@@ -1,0 +1,70 @@
+# importing libraries
+import numpy as np
+
+# generating numpy array
+my_list = [1, 2, 3, 4]
+arr = np.array(my_list)
+
+# details of numpy array
+type(arr)
+print(arr)
+arr.shape
+
+'''
+arange() is similar to range() but faster
+linspace() gives values between start to stop with step-size = (stop-start)/num              
+ time_complexity : arange() < linspace() < range() 
+'''
+my_list1 = [i for i in range(1,6)]
+my_list2 = np.arange(2,7)
+my_list3 = np.linspace(start=4, stop=9, num=5, dtype=int, endpoint=True)
+
+arr = np.array([my_list1, my_list2, my_list3])
+arr = np.concatenate([my_list1, my_list2, my_list3], axis=0)
+arr.shape
+
+'''
+flatten('C'), ravel('C'), reshape(order = 'C') is by default.
+'C' means by row-major and 'F' means by column.
+ravel() is faster then flatten because it is library-level function while flatten is method of array.
+'''
+arr = np.reshape(arr, (5,3), order = 'C')
+arr.flatten(), arr.ravel()
+arr.T
+
+# Indexing
+arr[1:, 1:4]                                        # Slicing by rows by columns
+arr < 5                                             # Return True or False for conditions of each elements
+arr[arr<5]                                          # Return array of all data which satisfy conditions.
+np.ones(shape=(4,2), dtype=None)                    
+np.zeros(shape=(2,4), dtype=None)
+
+'''
+random module generates the numpy array of random values.
+rand() generates Uniform distribution while randn() generates Normal distribution.
+randint() generates integer values from (start, stop, total_values)
+sample() generates by shape between values [o,1].
+choice() selects the value from the given list.
+'''
+np.random.rand(3,3)                                 
+arr = np.random.randn(3,3)                          
+np.random.randint(0,100,8)                          
+np.random.sample((1,5))                             
+np.random.choice([1,2,3,4,5,6,8])                  
+
+arr.sum()
+np.sum(arr, dtype=None, axis=1)                     # axis = 1 sum by rows
+np.sum(arr, initial=5, axis=0)                      # return sum by column + initial
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([[1, 2]]).T
+grid = np.array([[9, 8, 7],
+                 [6, 5, 4]])
+
+np.vstack([arr1, grid])
+np.hstack([grid, arr2])
+
+
+a = np.array([[1,2], [3,4]])
+b = np.array([[5,6], [7,8]])
+np.dot(a,b)
