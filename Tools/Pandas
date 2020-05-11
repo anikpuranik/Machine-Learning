@@ -1,0 +1,81 @@
+# importing libraries
+import pandas as pd
+import numpy as np
+
+# creating the dataset
+dataset = pd.DataFrame([[35, 21], [41, 34]], 
+                       columns=['Apples', 'Bananas'], 
+                       index=['2017 Sales', '2018 Sales']
+                       )
+
+df = pd.DataFrame(np.random.randint(1,26,25).reshape(5,5),
+                  index = ['row1','row2','row3','row4','row5'],
+                  columns = ['col1','col2','col3','col4','col5']
+                  )
+
+# missing values, manipulating index and columns
+dataset.iloc[:1]                                                          #columns = [0,1]
+dataset.loc[:1]                                                           #columns = [0,1)
+df.index.tolist()                                                         #display all indexs
+df.columns.tolist()                                                       #display all columns
+df['col1'].values                                                         #only for columns
+df['col1'].unique()                                                       #unique values
+dataset.index = [i for i in range(len(dataset.index))]                    #changing the index
+df = df.rename({'row1':'Row1', 'row2':'Row2'})                            #renaming columns
+df.isnull().sum()                                                         #null for pandas by column
+dataset.drop(columns = ['column names'], axis=1, inplace= True)
+dataset.drop(labels = 'column names', axis=1)
+dataset.drop(labels = 'row names', axis=0)
+dataset.dropna()                                                          #dropping any null values
+
+# converting pandas to array. 
+df.iloc[:,:].values
+df = pd.DataFrame([[21, 72, 67],
+                   [23, 78, 69],
+                   [32, 74, 56],
+                   [52, 54, 76]],
+                   columns=['a', 'b', 'c']
+                   )
+df = df.to_numpy()
+
+# joining two dataframes
+ingredients1 = pd.Series(['4 cups','1 cup','2 large','1 can'], 
+                        index=['Flour','Milk','Eggs','Spam'], 
+                        name = 'Dinner'
+                        )
+ingredients2 = pd.Series(['4 cup','2 cup','1 large','1 slice'], 
+                        index=['Water','Maggi','Eggs','Cheese'], 
+                        name = 'Snacks'
+                        )
+pd.concat([ingredients1, ingredients2], axis = 0, sort = False)
+pd.concat([ingredients1, ingredients2], axis = 1, sort = False)
+
+# saving dataset and loading
+dataset.to_csv('fruits.csv')
+dataset = pd.read_csv('fruits.csv', index_col=0)
+
+'''
+Loading the dataset. This depends on the type of file we are using.
+We can read using csv, json, excel, html and so on.
+For each file format panda have functions to load the data file.
+'''
+# 1.CSV file
+filename = '/home/asus/dataset/mercedes_benz/train.csv' 
+df = pd.read_csv(filename, 
+                 sep=',', 
+                 usecols=None, 
+                 dtype={'ID':None, 'y':None},
+                 index_col=False
+                 )
+df.head(6)
+df.info()
+# describe() does not display cat. features as they lack mean and std. deviation
+df.describe()                           
+
+# 2.Json file
+
+# 3.Html content
+# scrap all the tables from the url. Match return all the table with provided column name
+url = 'https://www.fdic.gov/bank/individual/failed/banklist.html'
+url = 'https://en.wikipedia.org/wiki/Mobile_country_code'
+data = pd.read_html(url, match='MCC', header=0)
