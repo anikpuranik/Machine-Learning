@@ -1,0 +1,54 @@
+# importing libraries
+from textblob import TextBlob, Word
+from textblob.classifiers import NaiveBayesClassifier
+
+# text
+text = TextBlob("I am Aniket, I am happy and I am Brilliant.")
+
+# words and sentences
+text.words, text.word_counts, text.sentences, text.words.count('i')
+
+# upper and lower
+text.upper(), text.lower()
+
+# lemmatize
+Word("caring").lemmatize('v')
+
+# defination
+Word("animal").definitions
+
+# singularizes and pularizes
+text.words.singularize(), text.words.pluralize(), text.correct()
+
+# part-of-speech tagging
+text.tags
+
+# noun phase extracting
+text.noun_phrases
+
+# sentiment analysis
+text.sentiment, text.sentiment_assessments, text.sentiment.polarity
+
+# parsing
+text.parse()
+
+# N-grams
+text.ngrams(n=4)
+
+# get start and end indices of sentences
+for line in text.sentences:
+    print(line, line.start, line.end)
+    print(line.sentiment.polarity)
+
+# classifier    
+classifier = NaiveBayesClassifier()
+prob_dist = classifier.prob_classify("I feel happy this morning.")
+prob_dist.max()
+
+# detect language
+text.detect_language()
+text.translate(to='hi')
+
+# string operation
+text.replace('I','We')
+text.subjectivity()
