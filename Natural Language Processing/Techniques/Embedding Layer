@@ -1,0 +1,35 @@
+from tensorflow.keras.preprocessing.text import one_hot
+
+sent = ['the glass of milk',
+        'the glass of juice',
+        'the cup of tea',
+        'I am a good boy',
+        'I am a good developer',
+        'understand the meaning of words',
+        'your videos are good']
+
+vocab_size = 10000
+
+# One Hot Representation
+one_conv = [one_hot(word, vocab_size) for word in sent] 
+
+# Word Embedding Representation
+from tensorflow.keras.layers import Embedding
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+sent_length = 5
+dimension = 10
+embedded_sent = pad_sequences(one_conv, padding='pre', maxlen=sent_length)
+
+# creating model
+model = Sequential()
+model.add(Embedding(vocab_size, dimension, input_length=sent_length))
+model.compile('sgd','mse')
+
+# summary of model
+model.summary()
+
+# model prediction
+pre = model.predict(embedded_sent)
+
+pre[0][0]
