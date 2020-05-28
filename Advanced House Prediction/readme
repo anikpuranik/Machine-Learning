@@ -1,0 +1,10 @@
+This module is regarding the complete implementation of end-to-end project in Machine Learning.
+
+Lifecycle in a data science projects.
+1. Exploratory Data Analysis
+2. Feature Engineering
+3. Feature Selection
+4. Model Building
+5. Model Deployment
+
+This model is build on Kaggle problem on House Price Prediction Using Advanced Regression
