@@ -5,9 +5,6 @@ Lifecycle in a data science projects.
 2. Feature Engineering
 3. Feature Selection
 4. Model Building
-5. Model Deployment
 
-This model is build on Kaggle problem on House Price Prediction Using Advanced Regression
-
-The Solution to problem is learned from Krish Naik:
-https://github.com/krishnaik06/Advanced-House-Price-Prediction-
+This model is build on Kaggle problem on House Price Prediction Using Advanced Regression.
+https://www.kaggle.com/c/house-prices-advanced-regression-techniques
