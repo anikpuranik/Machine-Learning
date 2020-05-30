@@ -32,7 +32,6 @@ title, text, sentences = sentence_segmentation(text)
 
 # 2. Tokenization
 # 3. Removing Stop Word
-# 4. Word Stemming
 def data_preprocess(text):
     words = set(word_tokenize(text))
     stop_words = stopwords.words('english')
