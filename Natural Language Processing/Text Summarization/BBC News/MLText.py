@@ -10,8 +10,7 @@ import ML_approach as k
 
 path = '/Users/aayushpuranik/.spyder-py3/dataset/BBC News Summary/BBC News Summary/News Articles/'
 categories = os.listdir(path)
-all_files = os.listdir('/Users/aayushpuranik/.spyder-py3/dataset/BBC News Summary/'
-                       + 'BBC News Summary/News Articles/'+categories[0])
+all_files = os.listdir('BBC News Summary/BBC News Summary/News Articles/'+categories[0])
 
 # loading text and summaries
 def get_data(all_files):
