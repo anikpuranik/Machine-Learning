@@ -48,6 +48,6 @@ test_text = 'I'
 suggestions = suggest(test_text)
 print(suggestions)
 
-pickle_out = open('autofiller.pkl', 'wb')
+pickle_out = open('autofiller suggestion.pkl', 'wb')
 pickle.dump(suggest, pickle_out)
 pickle_out.close()
