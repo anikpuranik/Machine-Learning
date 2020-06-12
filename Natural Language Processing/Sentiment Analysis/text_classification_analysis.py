@@ -11,7 +11,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix
 
 #-------------------------------loading dataset--------------------------------
-dataset = pd.read_csv('/Users/aayushpuranik/.spyder-py3/dataset/Sentiments.csv', delimiter='\t')
+dataset = pd.read_csv('Sentiments.csv', delimiter='\t')
 classes = list(set(dataset.Labels))
 #-------------------------------preprocessing----------------------------------
 def preprocessing(dataset):
