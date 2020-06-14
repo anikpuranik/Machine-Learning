@@ -124,7 +124,6 @@ def training_models(x_train, x_test, y_train, y_test, model, model_name, dataset
     return model
 
 
-
 odd_feature = odd_ratio_feature_generator(dataset, classes[:-1])
 #chi_values=chi_feature.max()
 odd_columns = list(odd_feature.loc[:, (odd_feature==0).any(axis=0)].columns)
