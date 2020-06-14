@@ -10,8 +10,10 @@ data = LabelEncoder().fit_transform(data)
 
 ''' We transform the data into numbers into the three different columns.'''
 transform = pd.get_dummies(data2)
+'''
 >>> output : 
    Hello  Hey  Hi
 0      1    0   0
 1      0    1   0
 2      0    0   1
+'''
