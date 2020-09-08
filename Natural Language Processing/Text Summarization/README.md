@@ -67,7 +67,7 @@ Features:
 * Term weight: This is the representation of words used in the sentences into numbers. Generally, a method from any of the above is used to represent weight of words. (E.g. TF-IDF).
 * Numerical data: Sentences with numbers are likely to have importance as quantifying a data is much better representation than words (E.g. Company made Hugh profit this year vs. Company had a 50 million turnover more in 2017 than in year 2016).
 
-#### Many more features can be added to increase the preformance
+    #### (Many more features can be added to increase the preformance)
 
 Advantage:
 * This method has proven to be much better at performing summarization.
@@ -84,7 +84,7 @@ Steps:
     (Fuzzzy Set Logic seems to perform better than Normalization but correct threshold must be set for each freature)
 * Generate the summary based in the scores.
 
-#### 6. Machine Learning:
+#### 5. Machine Learning:
 
 Idea:
 In Machine Learning the summarization concept is modified to classification. There is a need for summary to perform classification over text. This summary can be obtained both by humans or any of the above method. Now, By training the model over existing summary, the testing is done and then for next articles with each sentences we get whether the sentence is part of the summary or not.
@@ -96,4 +96,4 @@ Steps:
 * For any target convert the article in the vectors and run model.
 * For each sentences the prediction equal 1 sentences are collected and then combined to form a summary.
 
-#### 7. Deep Learning:
+#### 6. Deep Learning:
